@@ -4,6 +4,7 @@ package model;
  * @author benmacario
  */
 public class Paciente {
+    private int identificador; //acrescentado na ultima atualização
     private String nome;
     private String cpf;
     private String sexo;
@@ -49,4 +50,13 @@ public class Paciente {
     public void setIdade(int idade) {
         this.idade = idade;
     }
+
+    public int getIdentificador() {
+        return identificador;
+    }
+
+    public void setIdentificador(int identificador) {
+        this.identificador = identificador;
+    }
+    
 }

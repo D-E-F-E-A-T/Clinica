@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,26 +24,24 @@ public class ConexaoBD {
     private String drive = "com.mysql.cj.jdbc.Driver";
     
     private String user = "root";
-    private String password = "digite a senha do banco";
+    private String password = "Digite aqui sua senha!!!";
     public Connection conexao;
     
     public void conectarBD(){
         try {
             Class.forName(drive);
             conexao = DriverManager.getConnection(url, user, password);
-            System.out.println("Conexão realizada com sucesso!");
         } catch (SQLException ex) {
-            System.out.println("Driver não encontrado!\n" + ex);
+            JOptionPane.showMessageDialog(null,"Driver não encontrado!\n" + ex);
         } catch (ClassNotFoundException ex) {
-            System.out.println("Problemas na conexão com o banco!\n" + ex);
+            JOptionPane.showMessageDialog(null,"Problemas na conexão com o banco!\n" + ex);
         }    
     }
     public void desconectarBD(){
         try {
             conexao.close();
-            System.out.println("Banco desconectado com sucesso!");
         } catch (SQLException ex) {
-            System.out.println("Erro ao tentar desconectar do banco!\n" + ex);
+            JOptionPane.showMessageDialog(null,"Erro ao tentar desconectar do banco!\n" + ex);
         }
     }
 }
