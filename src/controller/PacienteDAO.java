@@ -81,7 +81,7 @@ public class PacienteDAO {
         
         return pacientes;
     }
-    public Paciente buscarPaciente(String identificador) {
+    public Paciente buscarPaciente(int identificador) {
         conn.conectarBD();
         
         Paciente p = new Paciente();
@@ -91,7 +91,7 @@ public class PacienteDAO {
         try {
             psw = conn.conexao.prepareStatement(selectWhere);
             
-            psw.setInt(1, Integer.parseInt(identificador));
+            psw.setInt(1, identificador);
             
             rs = psw.executeQuery();
             rs.first();

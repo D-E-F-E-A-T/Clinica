@@ -5,8 +5,7 @@
         <group>
             <file>file:/home/benmacario/Documents/Clinica/src/controller/PacienteDAO.java</file>
             <file>file:/home/benmacario/Documents/Clinica/src/views/Main.java</file>
-            <file>file:/home/benmacario/Documents/Clinica/src/model/Paciente.java</file>
-            <file>file:/home/benmacario/Documents/Clinica/src/connection/ConexaoBD.java</file>
+            <file>file:/home/benmacario/Documents/Clinica/src/model/PacienteTableModel.java</file>
             <file>file:/home/benmacario/Documents/Clinica/src/views/FrameEditar.java</file>
         </group>
     </open-files>

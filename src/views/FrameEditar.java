@@ -2,6 +2,7 @@ package views;
 
 import controller.PacienteDAO;
 import model.Paciente;
+import model.PacienteTableModel;
 
 /**
  *
@@ -32,6 +33,7 @@ public class FrameEditar extends javax.swing.JFrame {
         txtDataEdit = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Editar Paciente");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -124,7 +126,7 @@ public class FrameEditar extends javax.swing.JFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(txtCpfEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         panelEditarLayout.setVerticalGroup(
             panelEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,13 +157,16 @@ public class FrameEditar extends javax.swing.JFrame {
                 .addGap(26, 26, 26))
         );
 
-        getContentPane().add(panelEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, -1, 330));
+        getContentPane().add(panelEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 12, 720, 330));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+    
     Paciente paciente = new Paciente();
     PacienteDAO pacienteDAO = new PacienteDAO();
+    PacienteTableModel tableModel = new PacienteTableModel();
+    
     
     private void btnCadEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadEditActionPerformed
         paciente.setIdentificador(Integer.parseInt(txtIdentificador.getText()));
@@ -176,20 +181,20 @@ public class FrameEditar extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadEditActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        paciente = pacienteDAO.buscarPaciente(txtIdentificador.getText());
-        
-        txtNomeEdit.setText(paciente.getNome());
-        txtCpfEdit.setText(paciente.getCpf());
-        comboSexoEdit.setSelectedItem(paciente.getSexo());
-        txtIdadeEdit.setText(Integer.toString(paciente.getIdade()));
-        txtDataEdit.setText(paciente.getData());
-        
-        txtNomeEdit.setEnabled(true);
-        txtCpfEdit.setEnabled(true);
-        comboSexoEdit.setEnabled(true);
-        txtIdadeEdit.setEnabled(true);
-        txtDataEdit.setEnabled(true);
-        btnCadEdit.setEnabled(true);
+//        paciente = pacienteDAO.buscarPaciente(txtIdentificador.getText());
+//        
+//        txtNomeEdit.setText(paciente.getNome());
+//        txtCpfEdit.setText(paciente.getCpf());
+//        comboSexoEdit.setSelectedItem(paciente.getSexo());
+//        txtIdadeEdit.setText(Integer.toString(paciente.getIdade()));
+//        txtDataEdit.setText(paciente.getData());
+//        
+//        txtNomeEdit.setEnabled(true);
+//        txtCpfEdit.setEnabled(true);
+//        comboSexoEdit.setEnabled(true);
+//        txtIdadeEdit.setEnabled(true);
+//        txtDataEdit.setEnabled(true);
+//        btnCadEdit.setEnabled(true);
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
@@ -203,7 +208,7 @@ public class FrameEditar extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("GTK+".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

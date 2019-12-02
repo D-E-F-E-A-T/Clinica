@@ -4,8 +4,8 @@ import controller.PacienteDAO;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import model.Paciente;
+import model.PacienteTableModel;
 
 /**
  *
@@ -13,11 +13,14 @@ import model.Paciente;
  */
 public class Main extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Main
-     */
+    PacienteTableModel tableModel = new PacienteTableModel();
+    Paciente paciente = new Paciente();
+    PacienteDAO pacienteDAO = new PacienteDAO();
+    
     public Main() {
         initComponents();
+        
+        tabelaInfo.setModel(tableModel);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -49,6 +52,7 @@ public class Main extends javax.swing.JFrame {
         btnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Clínica Blá");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -171,7 +175,10 @@ public class Main extends javax.swing.JFrame {
         panelExibir.setLayout(panelExibirLayout);
         panelExibirLayout.setHorizontalGroup(
             panelExibirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 812, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelExibirLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
+                .addContainerGap())
         );
         panelExibirLayout.setVerticalGroup(
             panelExibirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,15 +298,11 @@ public class Main extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    //
-    Paciente paciente = new Paciente();
-    PacienteDAO pacienteDAO = new PacienteDAO();
-    
-    
+        
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         FrameEditar editar = new FrameEditar();
         editar.setVisible(true);
+        
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
@@ -316,14 +319,12 @@ public class Main extends javax.swing.JFrame {
         jPanelCard.revalidate();
         jPanelCard.repaint();
         jPanelCard.add(panelExibir);
+        tableModel.clearTable();
         
         List<Paciente> cnts = pacienteDAO.consultarPaciente();
-        DefaultTableModel model = (DefaultTableModel) tabelaInfo.getModel();
-        model.setNumRows(0); 
-       //percorre as linhas da tabela
-        for (Paciente c : cnts) {              
-              //aqui vc colaca os valores que vc quer capturar da lista de contatos
-              model.addRow(new Object[]{c.getIdentificador(), c.getNome(), c.getCpf(), c.getSexo(),c.getIdade(),c.getData()});           
+        
+        for (Paciente c : cnts) {
+            tableModel.addRow(c);
         }
     }//GEN-LAST:event_btnExibirActionPerformed
 
@@ -350,6 +351,8 @@ public class Main extends javax.swing.JFrame {
         switch(confirmacao) {
             case 0:
                 pacienteDAO.excluirPaciente(valorId);
+                tableModel.removeRow(tabelaInfo.getSelectedRow());
+                
                 break;
             default:
                 break;
@@ -362,7 +365,7 @@ public class Main extends javax.swing.JFrame {
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("GTK+".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
