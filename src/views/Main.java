@@ -157,17 +157,9 @@ public class Main extends javax.swing.JFrame {
 
             },
             new String [] {
-                "identificador", "Nome", "CPF", "Sexo", "Idade", "Data da consulta"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
+        ));
         tabelaInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(tabelaInfo);
 
@@ -263,6 +255,7 @@ public class Main extends javax.swing.JFrame {
         btnExcluir.setFont(new java.awt.Font("Noto Sans Disp", 1, 12)); // NOI18N
         btnExcluir.setText("Excluir");
         btnExcluir.setBorderPainted(false);
+        btnExcluir.setEnabled(false);
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
@@ -303,6 +296,26 @@ public class Main extends javax.swing.JFrame {
         FrameEditar editar = new FrameEditar();
         editar.setVisible(true);
         
+        int valorId = (int) tabelaInfo.getValueAt(tabelaInfo.getSelectedRow(), 0);
+        System.out.println(valorId);
+//        if(valorId != 0) {
+//            paciente = pacienteDAO.buscarPaciente(valorId);
+//        
+//            editar.txtIdentificador.setText(Integer.toString(valorId));
+//            editar.txtNomeEdit.setText(paciente.getNome());
+//            editar.txtCpfEdit.setText(paciente.getCpf());
+//            editar.comboSexoEdit.setSelectedItem(paciente.getSexo());
+//            editar.txtIdadeEdit.setText(Integer.toString(paciente.getIdade()));
+//            editar.txtDataEdit.setText(paciente.getData());
+//
+//            editar.txtNomeEdit.setEnabled(true);
+//            editar.txtCpfEdit.setEnabled(true);
+//            editar.comboSexoEdit.setEnabled(true);
+//            editar.txtIdadeEdit.setEnabled(true);
+//            editar.txtDataEdit.setEnabled(true);
+//            editar.btnCadEdit.setEnabled(true);
+//        }
+        
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
@@ -310,6 +323,8 @@ public class Main extends javax.swing.JFrame {
         jPanelCard.revalidate();
         jPanelCard.repaint();
         jPanelCard.add(panelCadastrar);
+        
+        btnExcluir.setEnabled(false);
         
         
     }//GEN-LAST:event_btnCadastrarActionPerformed
@@ -320,6 +335,7 @@ public class Main extends javax.swing.JFrame {
         jPanelCard.repaint();
         jPanelCard.add(panelExibir);
         tableModel.clearTable();
+        btnExcluir.setEnabled(true);
         
         List<Paciente> cnts = pacienteDAO.consultarPaciente();
         

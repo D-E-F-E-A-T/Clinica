@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Nicácio
+ * @author benmcario
  */
 public class ConexaoBD {
     private String servidor = "localhost:3306";

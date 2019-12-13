@@ -181,20 +181,20 @@ public class FrameEditar extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadEditActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-//        paciente = pacienteDAO.buscarPaciente(txtIdentificador.getText());
-//        
-//        txtNomeEdit.setText(paciente.getNome());
-//        txtCpfEdit.setText(paciente.getCpf());
-//        comboSexoEdit.setSelectedItem(paciente.getSexo());
-//        txtIdadeEdit.setText(Integer.toString(paciente.getIdade()));
-//        txtDataEdit.setText(paciente.getData());
-//        
-//        txtNomeEdit.setEnabled(true);
-//        txtCpfEdit.setEnabled(true);
-//        comboSexoEdit.setEnabled(true);
-//        txtIdadeEdit.setEnabled(true);
-//        txtDataEdit.setEnabled(true);
-//        btnCadEdit.setEnabled(true);
+        paciente = pacienteDAO.buscarPaciente(Integer.parseInt(txtIdentificador.getText()));
+        
+        txtNomeEdit.setText(paciente.getNome());
+        txtCpfEdit.setText(paciente.getCpf());
+        comboSexoEdit.setSelectedItem(paciente.getSexo());
+        txtIdadeEdit.setText(Integer.toString(paciente.getIdade()));
+        txtDataEdit.setText(paciente.getData());
+        
+        txtNomeEdit.setEnabled(true);
+        txtCpfEdit.setEnabled(true);
+        comboSexoEdit.setEnabled(true);
+        txtIdadeEdit.setEnabled(true);
+        txtDataEdit.setEnabled(true);
+        btnCadEdit.setEnabled(true);
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
@@ -234,8 +234,8 @@ public class FrameEditar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnCadEdit;
-    private javax.swing.JComboBox<String> comboSexoEdit;
+    protected javax.swing.JButton btnCadEdit;
+    protected javax.swing.JComboBox<String> comboSexoEdit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -243,10 +243,10 @@ public class FrameEditar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel panelEditar;
-    private javax.swing.JFormattedTextField txtCpfEdit;
-    private javax.swing.JFormattedTextField txtDataEdit;
-    private javax.swing.JTextField txtIdadeEdit;
-    private javax.swing.JTextField txtIdentificador;
-    private javax.swing.JTextField txtNomeEdit;
+    protected javax.swing.JFormattedTextField txtCpfEdit;
+    protected javax.swing.JFormattedTextField txtDataEdit;
+    protected javax.swing.JTextField txtIdadeEdit;
+    protected javax.swing.JTextField txtIdentificador;
+    protected javax.swing.JTextField txtNomeEdit;
     // End of variables declaration//GEN-END:variables
 }
