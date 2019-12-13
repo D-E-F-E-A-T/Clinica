@@ -42,14 +42,15 @@ public class Main extends javax.swing.JFrame {
         panelExibir = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaInfo = new javax.swing.JTable();
+        jPanelButton = new javax.swing.JPanel();
+        btnEditar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
         jPanelLogo = new javax.swing.JPanel();
         jLabelClinica = new javax.swing.JLabel();
         jLabelBla = new javax.swing.JLabel();
         jPanelButtons = new javax.swing.JPanel();
         btnCadastrar = new javax.swing.JButton();
         btnExibir = new javax.swing.JButton();
-        btnEditar = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Clínica Blá");
@@ -147,11 +148,14 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnCad)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         jPanelCard.add(panelCadastrar, "card2");
 
+        panelExibir.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tabelaInfo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(56, 56, 56)));
         tabelaInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -163,19 +167,51 @@ public class Main extends javax.swing.JFrame {
         tabelaInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(tabelaInfo);
 
-        javax.swing.GroupLayout panelExibirLayout = new javax.swing.GroupLayout(panelExibir);
-        panelExibir.setLayout(panelExibirLayout);
-        panelExibirLayout.setHorizontalGroup(
-            panelExibirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelExibirLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
+        panelExibir.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 0, 788, 240));
+
+        btnEditar.setFont(new java.awt.Font("Noto Sans Disp", 1, 12)); // NOI18N
+        btnEditar.setText("Editar");
+        btnEditar.setBorderPainted(false);
+        btnEditar.setFocusable(false);
+        btnEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
+        btnExcluir.setFont(new java.awt.Font("Noto Sans Disp", 1, 12)); // NOI18N
+        btnExcluir.setText("Excluir");
+        btnExcluir.setBorderPainted(false);
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelButtonLayout = new javax.swing.GroupLayout(jPanelButton);
+        jPanelButton.setLayout(jPanelButtonLayout);
+        jPanelButtonLayout.setHorizontalGroup(
+            jPanelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelButtonLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        panelExibirLayout.setVerticalGroup(
-            panelExibirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+        jPanelButtonLayout.setVerticalGroup(
+            jPanelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelButtonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                    .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
+
+        panelExibir.add(jPanelButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 236, 788, -1));
 
         jPanelCard.add(panelExibir, "card3");
 
@@ -240,48 +276,22 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        btnEditar.setFont(new java.awt.Font("Noto Sans Disp", 1, 12)); // NOI18N
-        btnEditar.setText("Editar");
-        btnEditar.setBorderPainted(false);
-        btnEditar.setFocusable(false);
-        btnEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
-            }
-        });
-
-        btnExcluir.setFont(new java.awt.Font("Noto Sans Disp", 1, 12)); // NOI18N
-        btnExcluir.setText("Excluir");
-        btnExcluir.setBorderPainted(false);
-        btnExcluir.setEnabled(false);
-        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanelButtonsLayout = new javax.swing.GroupLayout(jPanelButtons);
         jPanelButtons.setLayout(jPanelButtonsLayout);
         jPanelButtonsLayout.setHorizontalGroup(
             jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelButtonsLayout.createSequentialGroup()
-                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnExibir, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnExibir, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanelButtonsLayout.setVerticalGroup(
             jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelButtonsLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanelButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnExcluir)
-                    .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnExibir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
@@ -292,41 +302,12 @@ public class Main extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
         
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        FrameEditar editar = new FrameEditar();
-        editar.setVisible(true);
-        
-        int valorId = (int) tabelaInfo.getValueAt(tabelaInfo.getSelectedRow(), 0);
-        System.out.println(valorId);
-//        if(valorId != 0) {
-//            paciente = pacienteDAO.buscarPaciente(valorId);
-//        
-//            editar.txtIdentificador.setText(Integer.toString(valorId));
-//            editar.txtNomeEdit.setText(paciente.getNome());
-//            editar.txtCpfEdit.setText(paciente.getCpf());
-//            editar.comboSexoEdit.setSelectedItem(paciente.getSexo());
-//            editar.txtIdadeEdit.setText(Integer.toString(paciente.getIdade()));
-//            editar.txtDataEdit.setText(paciente.getData());
-//
-//            editar.txtNomeEdit.setEnabled(true);
-//            editar.txtCpfEdit.setEnabled(true);
-//            editar.comboSexoEdit.setEnabled(true);
-//            editar.txtIdadeEdit.setEnabled(true);
-//            editar.txtDataEdit.setEnabled(true);
-//            editar.btnCadEdit.setEnabled(true);
-//        }
-        
-    }//GEN-LAST:event_btnEditarActionPerformed
-
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         jPanelCard.removeAll();
         jPanelCard.revalidate();
         jPanelCard.repaint();
         jPanelCard.add(panelCadastrar);
-        
-        btnExcluir.setEnabled(false);
-        
-        
+         
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnExibirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExibirActionPerformed
@@ -335,7 +316,6 @@ public class Main extends javax.swing.JFrame {
         jPanelCard.repaint();
         jPanelCard.add(panelExibir);
         tableModel.clearTable();
-        btnExcluir.setEnabled(true);
         
         List<Paciente> cnts = pacienteDAO.consultarPaciente();
         
@@ -361,19 +341,46 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        int valorId = (int) tabelaInfo.getValueAt(tabelaInfo.getSelectedRow(), 0);
-        int confirmacao = JOptionPane.showConfirmDialog(rootPane, "Tem certeza que deseja excluir paciente!");
-        
-        switch(confirmacao) {
-            case 0:
-                pacienteDAO.excluirPaciente(valorId);
-                tableModel.removeRow(tabelaInfo.getSelectedRow());
-                
-                break;
-            default:
-                break;
+        if(tabelaInfo.getSelectedRow() != -1) {
+            int valorId = (int) tabelaInfo.getValueAt(tabelaInfo.getSelectedRow(), 0);
+            int confirmacao = JOptionPane.showConfirmDialog(rootPane, "Tem certeza que deseja excluir paciente!");
+
+            switch(confirmacao) {
+                case 0:
+                    pacienteDAO.excluirPaciente(valorId);
+                    tableModel.removeRow(tabelaInfo.getSelectedRow());
+
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma linha na tabela para excluir!");
         }
+        
     }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+
+        if(tabelaInfo.getSelectedRow() != -1) {
+            FrameEditar editar = new FrameEditar();
+            editar.setVisible(true);
+        
+            int valorId = (int) tabelaInfo.getValueAt(tabelaInfo.getSelectedRow(), 0);
+            
+            paciente = pacienteDAO.buscarPaciente(valorId);
+            
+            editar.txtIdentificador.setText(Integer.toString(valorId));
+            editar.txtNomeEdit.setText(paciente.getNome());
+            editar.txtCpfEdit.setText(paciente.getCpf());
+            editar.comboSexoEdit.setSelectedItem(paciente.getSexo());
+            editar.txtIdadeEdit.setText(Integer.toString(paciente.getIdade()));
+            editar.txtDataEdit.setText(paciente.getData());
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma linha na tabela para editar!");
+        }
+
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -419,6 +426,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelBla;
     private javax.swing.JLabel jLabelClinica;
+    private javax.swing.JPanel jPanelButton;
     private javax.swing.JPanel jPanelButtons;
     private javax.swing.JPanel jPanelCard;
     private javax.swing.JPanel jPanelLogo;

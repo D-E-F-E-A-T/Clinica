@@ -28,7 +28,6 @@ public class FrameEditar extends javax.swing.JFrame {
         btnCadEdit = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         txtIdentificador = new javax.swing.JTextField();
-        btnBuscar = new javax.swing.JButton();
         txtCpfEdit = new javax.swing.JFormattedTextField();
         txtDataEdit = new javax.swing.JFormattedTextField();
 
@@ -42,8 +41,6 @@ public class FrameEditar extends javax.swing.JFrame {
         jLabel1.setText("Nome:");
         jLabel1.setPreferredSize(new java.awt.Dimension(40, 20));
 
-        txtNomeEdit.setEnabled(false);
-
         jLabel2.setText("CPF:");
         jLabel2.setPreferredSize(new java.awt.Dimension(40, 20));
 
@@ -56,12 +53,8 @@ public class FrameEditar extends javax.swing.JFrame {
         jLabel5.setPreferredSize(new java.awt.Dimension(40, 20));
 
         comboSexoEdit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "F" }));
-        comboSexoEdit.setEnabled(false);
-
-        txtIdadeEdit.setEnabled(false);
 
         btnCadEdit.setText("Editar");
-        btnCadEdit.setEnabled(false);
         btnCadEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadEditActionPerformed(evt);
@@ -70,26 +63,19 @@ public class FrameEditar extends javax.swing.JFrame {
 
         jLabel6.setText("Identificador:");
 
-        btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
+        txtIdentificador.setEnabled(false);
 
         try {
             txtCpfEdit.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        txtCpfEdit.setEnabled(false);
 
         try {
             txtDataEdit.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        txtDataEdit.setEnabled(false);
 
         javax.swing.GroupLayout panelEditarLayout = new javax.swing.GroupLayout(panelEditar);
         panelEditar.setLayout(panelEditarLayout);
@@ -109,9 +95,7 @@ public class FrameEditar extends javax.swing.JFrame {
                     .addGroup(panelEditarLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelEditarLayout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -131,12 +115,11 @@ public class FrameEditar extends javax.swing.JFrame {
         panelEditarLayout.setVerticalGroup(
             panelEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEditarLayout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
+                .addContainerGap(47, Short.MAX_VALUE)
                 .addGroup(panelEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar))
-                .addGap(37, 37, 37)
+                    .addComponent(txtIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
                 .addGroup(panelEditarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNomeEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -180,23 +163,6 @@ public class FrameEditar extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnCadEditActionPerformed
 
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        paciente = pacienteDAO.buscarPaciente(Integer.parseInt(txtIdentificador.getText()));
-        
-        txtNomeEdit.setText(paciente.getNome());
-        txtCpfEdit.setText(paciente.getCpf());
-        comboSexoEdit.setSelectedItem(paciente.getSexo());
-        txtIdadeEdit.setText(Integer.toString(paciente.getIdade()));
-        txtDataEdit.setText(paciente.getData());
-        
-        txtNomeEdit.setEnabled(true);
-        txtCpfEdit.setEnabled(true);
-        comboSexoEdit.setEnabled(true);
-        txtIdadeEdit.setEnabled(true);
-        txtDataEdit.setEnabled(true);
-        btnCadEdit.setEnabled(true);
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -233,7 +199,6 @@ public class FrameEditar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscar;
     protected javax.swing.JButton btnCadEdit;
     protected javax.swing.JComboBox<String> comboSexoEdit;
     private javax.swing.JLabel jLabel1;
